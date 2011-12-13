@@ -6,12 +6,10 @@ from django.db.models import Q
 from django.db.utils import IntegrityError
 from django.template.defaultfilters import slugify
 
-from jmbo.models import ModelBase
-
 RE_NUMERICAL_SUFFIX = re.compile(r'^[\w-]*-(\d+)+$')
 
 
-def generate_slug(obj, text, tail_number=0, model=ModelBase):
+def generate_slug(obj, text, tail_number=0, model=None):
     from jmbo.models import ModelBase
     """
     Returns a new unique slug. Object must provide a SlugField called slug.
@@ -24,6 +22,9 @@ def generate_slug(obj, text, tail_number=0, model=ModelBase):
     # Empty slugs are ugly (eg. '-1' may be generated) so force non-empty
     if not slug:
         slug = 'no-title'
+
+    if not model:
+        model = ModelBase
 
     query = model.objects.filter(
         slug__startswith=slug
