@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.1.10 (2011-12-13)
+-------------------
+#. Made generate_slug method accept different models than ModelBase
+
 0.1.9 (2011-09-27)
 ------------------
 #. Added primary category field on ModelBase.
