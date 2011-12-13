@@ -6,6 +6,8 @@ from django.db.models import Q
 from django.db.utils import IntegrityError
 from django.template.defaultfilters import slugify
 
+from jmbo.models import ModelBase
+
 RE_NUMERICAL_SUFFIX = re.compile(r'^[\w-]*-(\d+)+$')
 
 
